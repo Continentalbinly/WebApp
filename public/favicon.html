@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favicon Generator</title>
+</head>
+<body>
+  <canvas id="favicon" width="32" height="32"></canvas>
+  <script>
+    const canvas = document.getElementById('favicon');
+    const ctx = canvas.getContext('2d');
+    
+    // Create gradient background
+    const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+    gradient.addColorStop(0, '#06A764');
+    gradient.addColorStop(1, '#013F81');
+    
+    // Draw rounded rectangle background
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, 32, 32, 6);
+    ctx.fill();
+    
+    // Draw document lines
+    ctx.fillStyle = 'white';
+    ctx.fillRect(8, 12, 16, 2);
+    ctx.fillRect(8, 16, 16, 2);
+    ctx.fillRect(8, 20, 12, 2);
+    
+    // Draw circle
+    ctx.beginPath();
+    ctx.arc(24, 20, 2, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    // Convert to data URL
+    const dataURL = canvas.toDataURL('image/png');
+    console.log('Favicon data URL:', dataURL);
+  </script>
+</body>
+</html>
